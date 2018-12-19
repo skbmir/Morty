@@ -26,10 +26,7 @@ class Morty():
         
     def main_loop(self):
         while True:
-            ev = []
-            ev = self._client.rtm_read()
-            print(ev)
-            command, channel = self._handle_events(ev)
+            command, channel = self._handle_events(self._client.rtm_read())
 
             if command:
                 self._handle_commands(command, channel)
